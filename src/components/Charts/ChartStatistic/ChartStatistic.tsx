@@ -11,6 +11,8 @@ interface ChartStatisticProps {
 
 export function ChartStatistic ({ learnedLong,newWords  }:ChartStatisticProps) : JSX.Element{
 
+  const labelData = newWords.length>= learnedLong.length?newWords:learnedLong;
+
   const options = {
     responsive: true,
     interaction: {
@@ -39,7 +41,7 @@ export function ChartStatistic ({ learnedLong,newWords  }:ChartStatisticProps) :
   };
 
   const userData = {
-    labels: learnedLong.map(d => d.date),
+    labels: labelData.map(d => d.date),
     datasets: [
       {
         label: 'Всего выученных слов',
